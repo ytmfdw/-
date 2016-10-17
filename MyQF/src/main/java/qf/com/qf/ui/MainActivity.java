@@ -63,11 +63,11 @@ public class MainActivity extends AppCompatActivity {
                 .build();
         LoginService ls = retrofit.create(LoginService.class);
         //==================for test============
-        String name = "xiechun@1000Phone.com";
+       /* String name = "xiechun@1000Phone.com";
         String password = "0607020088Xie";
-        Call<String> loginCall = ls.login(name, password);
+        Call<String> loginCall = ls.login(name, password);*/
         //=============test end=========================
-//        Call<String> loginCall = ls.login(et_name.getText().toString(), et_password.getText().toString());
+        Call<String> loginCall = ls.login(et_name.getText().toString(), et_password.getText().toString());
         loginCall.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {

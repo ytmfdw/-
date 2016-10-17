@@ -8,6 +8,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import qf.com.qf.bean.KaoQinBean;
@@ -47,6 +48,8 @@ public class HtmlUtils {
             }
             Log.d("ytmfdw", "e_kq.toString=" + beans.toString());
         }
+        //反序
+        Collections.reverse(beans);
         return beans;
     }
 }

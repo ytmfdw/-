@@ -2,6 +2,7 @@ package qf.com.qf.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -12,9 +13,11 @@ import java.util.List;
 
 import in.srain.cube.views.ptr.PtrDefaultHandler;
 import in.srain.cube.views.ptr.PtrFrameLayout;
+import qf.com.qf.QFApplication;
 import qf.com.qf.R;
 import qf.com.qf.adapter.KaoQinAdapter;
 import qf.com.qf.bean.KaoQinBean;
+import qf.com.qf.bean.UserBean;
 import qf.com.qf.http.API;
 import qf.com.qf.http.HtmlUtils;
 import qf.com.qf.http.QueryService;
@@ -28,7 +31,7 @@ import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
 /**
  * Created by Administrator on 2016/10/14 0014.
  */
-public class QueryActivity extends Activity {
+public class QueryActivity extends AppCompatActivity {
 
     PtrFrameLayout refreshView;
 
@@ -37,7 +40,7 @@ public class QueryActivity extends Activity {
     List<KaoQinBean> data = new ArrayList<>();
     KaoQinAdapter adapter;
 
-    int page = 0;
+    int page = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +91,11 @@ public class QueryActivity extends Activity {
                 adapter.notifyDataSetChanged();
 
                 refreshView.refreshComplete();
+                //设置标题
+                UserBean user = QFApplication.user;
+                if (user != null) {
+                    getSupportActionBar().setTitle(user.name + "\t" + user.id);
+                }
 
             }
 

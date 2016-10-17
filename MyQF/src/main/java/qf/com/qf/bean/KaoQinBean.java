@@ -3,6 +3,8 @@ package qf.com.qf.bean;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import qf.com.qf.QFApplication;
+
 /**
  * Created by Administrator on 2016/10/16 0016.
  */
@@ -30,6 +32,11 @@ public class KaoQinBean {
             kq_type = e.get(4).text();
             kq_time = e.get(5).text();
             kq_address = e.get(6).text();
+            if (QFApplication.user == null) {
+                QFApplication.user = new UserBean();
+                QFApplication.user.name = kq_name;
+                QFApplication.user.id = kq_id;
+            }
         } catch (Exception e1) {
             e1.printStackTrace();
         }
