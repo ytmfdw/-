@@ -7,4 +7,12 @@ public class UserBean {
 
     public String name;
     public String id;
+
+    public String account;
+    public String password;
+
+    @Override
+    public String toString() {
+        return account + ":" + password;
+    }
 }
