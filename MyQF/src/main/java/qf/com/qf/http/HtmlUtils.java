@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import qf.com.qf.bean.KaoQinAllBean;
 import qf.com.qf.bean.KaoQinBean;
 
 /**
@@ -18,6 +19,12 @@ import qf.com.qf.bean.KaoQinBean;
  */
 public class HtmlUtils {
 
+    /**
+     * 解析html，得出考勤集合
+     *
+     * @param html
+     * @return
+     */
     public static List<KaoQinBean> getKaoQinBeanByHtml(String html) {
         ArrayList<KaoQinBean> beans = new ArrayList<>();
         Document value = Jsoup.parseBodyFragment(html);
@@ -51,5 +58,27 @@ public class HtmlUtils {
         //反序
         Collections.reverse(beans);
         return beans;
+    }
+
+
+    /**
+     * 解析xml，得出考勤汇总数据
+     *
+     * @param html
+     * @return
+     */
+    public static KaoQinAllBean getKaoQinAllBeanByHtml(String html) {
+        ArrayList<KaoQinAllBean> beans = new ArrayList<>();
+        Document value = Jsoup.parseBodyFragment(html);
+        Log.d("ytmfdw", "parseBody valueSize=");
+        Elements es = value.getElementsByClass("table-responsive");
+        if (es.size() == 2) {
+            //合格，第一个是考勤汇总，第二个是个人考勤详情
+            Element e_all = es.get(0);
+            Elements e_all_body = e_all.getElementsByTag("tr");
+            Elements e_all_value = e_all_body.get(2).getElementsByTag("td");
+            return new KaoQinAllBean(e_all_value);
+        }
+        return null;
     }
 }

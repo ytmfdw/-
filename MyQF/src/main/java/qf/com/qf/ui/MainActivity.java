@@ -9,16 +9,11 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.io.IOException;
-
-import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
 import qf.com.qf.R;
-import qf.com.qf.SharedUtils;
+import qf.com.qf.utils.SharedUtils;
 import qf.com.qf.bean.UserBean;
 import qf.com.qf.http.API;
-import qf.com.qf.http.HttpUtils;
 import qf.com.qf.http.LoginService;
 import retrofit2.Call;
 import retrofit2.Callback;

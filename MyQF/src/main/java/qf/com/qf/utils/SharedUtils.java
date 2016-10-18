@@ -1,4 +1,4 @@
-package qf.com.qf;
+package qf.com.qf.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -37,8 +37,8 @@ public class SharedUtils {
         try {
             String[] arr = value.split(":");
             UserBean user = new UserBean();
-            user.name = arr[0];
-            user.id = arr[1];
+            user.account = arr[0];
+            user.password = arr[1];
             return user;
         } catch (Exception e) {
             e.printStackTrace();
