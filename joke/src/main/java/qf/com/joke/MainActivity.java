@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
             toolbar.setPadding(0, statuesHeight, 0, 0);
             toolbar.setLayoutParams(params);
             //设置底部
-            findViewById(R.id.root).setPadding(0, 0, 0, DisplayTools.getBottomStatusHeight(this));
+//            findViewById(R.id.root).setPadding(0, 0, 0, DisplayTools.getBottomStatusHeight(this));
 
         }
 
@@ -128,9 +128,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //打开查看图片界面
-                Intent intent = new Intent(MainActivity.this, LookPicture.class);
-                MainApplication.drawable = img.getDrawable().getCurrent();
-                startActivity(intent);
+                if (img.getDrawable() != null) {
+                    Intent intent = new Intent(MainActivity.this, LookPicture.class);
+                    MainApplication.drawable = img.getDrawable().getCurrent();
+                    startActivity(intent);
+                }
 
             }
         });

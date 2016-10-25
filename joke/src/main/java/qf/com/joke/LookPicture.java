@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import uk.co.senab.photoview.PhotoView;
+import uk.co.senab.photoview.PhotoViewAttacher;
 
 /**
  * Created by Administrator on 2016/10/24 0024.
@@ -23,9 +24,14 @@ public class LookPicture extends Activity {
         } else {
             finish();
         }
-        pv.setOnClickListener(new View.OnClickListener() {
+        pv.setOnPhotoTapListener(new PhotoViewAttacher.OnPhotoTapListener() {
             @Override
-            public void onClick(View v) {
+            public void onPhotoTap(View view, float v, float v1) {
+                finish();
+            }
+
+            @Override
+            public void onOutsidePhotoTap() {
                 finish();
             }
         });
